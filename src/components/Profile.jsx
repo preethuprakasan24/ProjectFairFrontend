@@ -23,22 +23,7 @@ function Profile() {
   const [preview, setPreview] = useState("");
   const[updateStatus, setUpdateStatus] = useState({})
 
-  useEffect(() => {
-    if (sessionStorage.getItem("existingUser")) {
-      const user = JSON.parse(sessionStorage.getItem("existingUser"));
-      setUserDetails({
-        ...userDetails,
-        username: user.username,
-        email: user.email,
-        password: user.password,
-        github: user.github,
-        linkedin: user.linkedin,
-      });
-      setExistingImage(user.profile);
-    }
-  }, [updateStatus]);
 
-  console.log(userDetails);
 
   const handleFile = (e) => {
     setUserDetails({ ...userDetails, profile: e.target.files[0] });
@@ -102,6 +87,23 @@ function Profile() {
     }
   };
 
+  useEffect(() => {
+    if (sessionStorage.getItem("existingUser")) {
+      const user = JSON.parse(sessionStorage.getItem("existingUser"));
+      setUserDetails({
+        ...userDetails,
+        username: user.username,
+        email: user.email,
+        password: user.password,
+        github: user.github,
+        linkedin: user.linkedin,
+      });
+      setExistingImage(user.profile);
+    }
+  }, [updateStatus]);
+
+  console.log(userDetails);
+
   return (
     <div
       className="shadow p-4 mb-5"
@@ -131,6 +133,7 @@ function Profile() {
                 type="file"
                 style={{ display: "none" }}
                 id="profileImg"
+              
                 onChange={(e) => handleFile(e)}
               />
               {existingImage === "" ? (
