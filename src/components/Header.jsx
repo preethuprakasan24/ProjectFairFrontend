@@ -9,17 +9,17 @@ import { isLoginAuthContext } from "../context/Contextshare";
 
 function Header() {
   const navigate = useNavigate();
-  const{setIsLoginStatus} = useContext(isLoginAuthContext)
+  const { setIsLoginStatus } = useContext(isLoginAuthContext);
   const [token, setToken] = useState("");
   const handleLogout = () => {
     sessionStorage.removeItem("existingUser");
-    sessionStorage.removeItem("token");  
-    setIsLoginStatus(false)
+    sessionStorage.removeItem("token");
+    setIsLoginStatus(false);
     navigate("/");
   };
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
-      setToken(sessionStorage.getItem("token"));  
+      setToken(sessionStorage.getItem("token"));
     }
   }, []);
   return (
