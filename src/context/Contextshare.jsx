@@ -2,14 +2,14 @@ import React, { createContext, useState } from "react";
 
 export const addResponseContext = createContext({});
 export const editResponseContext = createContext({});
-export const isLoginAuthContext = createContext(false);
+export const isLoginAuthContext = createContext(true);
 
 function Contextshare({ children }) {
   //children is a predefined prop to share data
 
   const [addResponse, setAddResponse] = useState({});
   const [editResponse, setEditResponse] = useState({});
-  const [isLoginStatus, setIsLoginStatus] = useState(false);
+  const [isLoginStatus, setIsLoginStatus] = useState(true);
   return (
     <>
       <addResponseContext.Provider value={{ addResponse, setAddResponse }}>
